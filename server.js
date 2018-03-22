@@ -136,10 +136,11 @@ function breathing(lightId, breatheIn) {
     h = config.MIN_HUE_VALUE;
   }
   else {
-    h = (Math.round((receiver.totalSessionDuration - minTotalSessionDuration) /
+    h = Math.round(((receiver.totalSessionDuration - minTotalSessionDuration) /
                     (1 + maxTotalSessionDuration - minTotalSessionDuration)) *
          (config.MAX_HUE_VALUE - config.MIN_HUE_VALUE)) + config.MIN_HUE_VALUE;
   }
+  h += Math.round((Math.random() * 40) - 20);
 
   var presences = receiver.presences;
   var divisor = Math.max(1, Math.log(presences));
